@@ -7,10 +7,15 @@
 
 import UIKit
 import UserNotifications
-
+//Firebase +
+import Firebase
+//Firebase -
 class Notifications: NSObject, UNUserNotificationCenterDelegate {
-    
+
     let notificationCenter = UNUserNotificationCenter.current()
+    //Firebase +
+    let messagingDelegate = Messaging.messaging()
+    //Firebase -
     
     func requestAuthorization() {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -111,3 +116,12 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         completionHandler([.alert, .sound])
     }
 }
+
+//Firebase +
+extension Notifications: MessagingDelegate{
+    public func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print ("\n\nFirebase registration token: \(fcmToken ?? "")\n\n")
+    }
+
+}
+//Firebase -

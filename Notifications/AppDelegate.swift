@@ -9,6 +9,7 @@
 import UIKit
 //
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         notifications.requestAuthorization()
         notifications.notificationCenter.delegate = notifications
-        UNUserNotificationCenter.current().delegate = notifications
+        //UNUserNotificationCenter.current().delegate = notifications
+        //Firebase +
+        FirebaseApp.configure()
+        
+        //notifications.messagingDelegate.delegate = notifications
+        Messaging.messaging().delegate = notifications
+        
+        //Firebase -
         return true
     }
     
