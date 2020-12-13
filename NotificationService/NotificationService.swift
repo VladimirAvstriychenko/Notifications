@@ -125,6 +125,8 @@ extension NotificationService {
             
             var urlPath = URL(fileURLWithPath: NSTemporaryDirectory())
             
+            print("third test")
+            
             let uniqueURLEnding = ProcessInfo.processInfo.globallyUniqueString + ".png"
             urlPath = urlPath.appendingPathComponent(uniqueURLEnding)
             
